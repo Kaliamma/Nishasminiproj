@@ -1,6 +1,6 @@
-# MiniProjects
+# Description
 
-This has the whole list of Mini projects developed so far.
+Brief list of Mini projects developed so far.
 -Creating Music
 -Drawing Effect
 -Typing Effect
