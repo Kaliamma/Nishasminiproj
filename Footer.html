@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Glass Footer Project</title>
+	<!--The link to style.css file-->
+	<link rel="stylesheet" type="text/css" href="css1/style.css">
+	<!--The link to reset.css file-->
+	<link rel="stylesheet" type="text/css" href="css1/reset.css">
+</head>
+<body>
+	<script src ="src\bubbly-bg.js"></script>
+	<canvas id="demo" width="400" height="300"></canvas> 
+
+  <script>
+  	bubbly({
+	    	 canvas: document.getElementById("demo"),
+	    	colorStart: '#59C173',
+  			colorStop: '#a17fe0',
+  				blur: 1,
+  			compose: 'source-over',
+  			canvas: document.querySelector("#background"),
+ 			bubbleFunc:() => `hsla(${Math.random() * 50}, 100%, 50%, .3)`,
+    });
+    
+</script>
+<footer id="glass_footer">
+	<ul id="menu">
+		<div id="google_tab" class="tab add_padding_top"><a href="https://www.google.com">Google</a></div>
+
+		<div id="blog_tab" class="tab add_padding_top">
+			<a href="https://unnisnishawrites.blogspot.com">Blog</a>
+		</div>
+		<div id="cv_tab" class="cv tab add_padding_top"><a href="resume\Nisha Unnikrishnanunny_CV.pdf">.Pdf CV</a></div>
+	</ul>
+</footer>
+</body>
+</html>

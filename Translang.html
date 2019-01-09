@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<body>
+<style text="text/css">
+	.para {
+		color: LawnGreen;
+		font-stretch: true;
+		font-weight: 100; 
+		font-size:50px;
+	}
+	.head {
+		color: OliveDrab;
+		font-size: 50px;
+        font-weight: 600;
+	}
+	body{
+		background-image: linear-gradient(to right, #b92b27, #1565c0);
+	}
+
+
+</style>
+<title>Project 2: Using Translation API</title>
+<p class = "para">How are you?</p>
+<h2 class="head">Transalation is fun. This is a sample text.<h2>
+
+<div id="google_translate_element"></div>
+
+<script type="text/javascript">
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

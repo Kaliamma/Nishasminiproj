@@ -1,0 +1,108 @@
+<!-- Using Scrawl-canvas: is an open-source JavaScript library for creating and manipulating 2D canvas elements. This project to draw like on a piece of paper using this library. More information in this link: http://scrawl.rikweb.org.uk/, https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Drawing with scrawl-canvas</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1200" height="600"
+style="border:3px solid seagreen;"></canvas>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/128723/scrawlCore-min.js"></script>
+<script>
+	var mycode = function() {
+  'use strict';
+
+  /* We can draw freehand lines using the Shape entity. To control the act of drawing we make use of event listeners to tell us when the user starts and ends the line.
+  
+  First, we'll define the various variables and functions that our event listeners will use: */
+  var pad = scrawl.pad.myCanvas;
+  var canvas = scrawl.canvas.myCanvas;
+  var drawing = false;
+  var currentX;
+  var currentY;
+  var here;
+
+  var currentLine;
+  var defaultLine = scrawl.makeShape({
+    method: 'draw',
+    lineWidth: 5,
+    lineJoin: 'flat',
+    lineCap: 'round',
+    shadowBlur: 3,
+    shadowColor: 'red',
+    strokeStyle: 'brown'
+  });
+
+  var stopE = function(e) {
+    if (e) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
+  
+  var startDrawing = function(e) {
+    stopE(e);
+    here = pad.getMouse();
+    drawing = true;
+    currentLine = defaultLine.clone({
+      start: here.getData(),
+      data: 'l0,0',
+    });
+    currentX = here.x;
+    currentY = here.y;
+  };
+
+  var endDrawing = function(e) {
+    stopE(e);
+    drawing = false;
+  };
+
+  /* Building the freehand line is simply a case of adding data to the Shape entity's data attribute: */
+  var keepDrawing = function(e) {
+    stopE(e);
+    if (drawing) {
+      here = pad.getMouse();
+      if (here.x !== currentX || here.y !== currentY) {
+        var extension = ' ' + (here.x - currentX) + ',' + (here.y - currentY);
+        currentLine.set({
+          data: currentLine.data + extension
+        });
+        currentX = here.x;
+        currentY = here.y;
+      }
+    }
+  };
+
+  /* We also need an animation object to redraw the canvas - without it, nothing will appear: */
+  scrawl.makeAnimation({
+    fn: function() {
+      scrawl.render();
+    }
+  });
+
+  /* Add the required event listeners to the canvas element: */
+  scrawl.addListener(['down'], startDrawing, canvas);
+  scrawl.addListener(['up', 'leave'], endDrawing, canvas);
+  scrawl.addListener(['move'], keepDrawing, canvas);
+  
+};
+
+/* TASK: add a button (either in the html or as part of the canvas itself) which, when clicked, will clear all the drawn lines from the canvas */
+
+/* BONUS TASK: add a smoothing algorithm - either to the keepDrawing function, or to the endDrawing function */
+
+scrawl.loadExtensions({
+  path: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/128723/',
+  extensions: ['animation', 'shape'],
+  callback: function() {
+    window.addEventListener('load', function() {
+      scrawl.init();
+      mycode();
+    }, false);
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+   
+    <title>Project1: Typing Plugin</title>
+    
+    <style type="text/css">
+      body {
+          background-image: linear-gradient(to right,#dd3e54, #6be585);
+        }
+        body p {
+          color: Crimson;
+          width: 100%;
+          position: absolute;
+          top: 70%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -100%);
+                  transform: translate(-50%, -100%);
+          text-align: center;
+          font-family: opens sans, helvetica;
+          font-size: 50px;
+          font-weight: 600;
+        }
+
+    </style>
+   <body>
+	  <p class="typeIt"></p>
+	</div>
+
+    <script src="js/typeit.min.js"></script>
+    <script>
+    new TypeIt('.typeIt', {
+        speed: 100,
+        lifeLike:true,
+    })
+    .type(['Hello,'])
+    .pause(600)
+    .type(' My name is Nisha Unnikrishnan.')
+    .break().pause(1000)
+    .type('I am super creative and ready to learn..')
+    .break().pause(600)
+    .type(' Web Developer')
+    .break()
+    .pause(800)
+    .delete(15)
+    .type('an Artist')
+    .pause(1200)
+    .delete(9)
+    .break()
+    .type('HTML Coder..').pause(2000)
+    .delete()
+    .type('Feel free to contact me')
+    .pause(600)
+    .type(' and we may work together... ')
+    .pause(600)
+    .type('\:\)')
+    .break()
+    .type('Mail: nisha.unni@yahoo.com ')
+      
+		</script>
+</body>
+</html>
