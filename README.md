@@ -8,6 +8,6 @@ Brief list of Mini projects developed so far.
 -Using ArcGIS API
 -Tribute and Resume Page
 -Footer and Menu Page
-
+Refer project description files
 
 
